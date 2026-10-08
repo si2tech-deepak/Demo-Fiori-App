@@ -1,0 +1,76 @@
+<mvc:View
+    controllerName="zmp.visitorreg.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    displayBlock="true">
+
+    <Page id="page" title="{i18n>title}" showFooter="true"
+        showNavButton="true" navButtonPress=".onNavBack">
+        <content>
+            <f:SimpleForm id="visitorForm"
+                editable="true"
+                layout="ColumnLayout"
+                columnsM="1"
+                columnsL="2"
+                columnsXL="2"
+                title="{i18n>form.title}">
+                <f:content>
+
+                    <core:Title id="titleVisitor" text="{i18n>form.section.visitor}" />
+
+                    <Label id="lblVisitorName" text="{i18n>field.visitorName}" labelFor="inpVisitorName" required="true" />
+                    <Input id="inpVisitorName" value="{VisitorName}" maxLength="80" />
+
+                    <Label id="lblMobile" text="{i18n>field.mobileNumber}" labelFor="inpMobile" required="true" />
+                    <Input id="inpMobile" value="{MobileNumber}" type="Tel" maxLength="10"
+                        placeholder="{i18n>field.mobileNumber.placeholder}" />
+
+                    <Label id="lblEmail" text="{i18n>field.emailId}" labelFor="inpEmail" />
+                    <Input id="inpEmail" value="{EmailId}" type="Email" maxLength="100" />
+
+                    <Label id="lblCompany" text="{i18n>field.companyName}" labelFor="inpCompany" />
+                    <Input id="inpCompany" value="{CompanyName}" maxLength="80" />
+
+                    <Label id="lblIdType" text="{i18n>field.idProofType}" labelFor="selIdType" />
+                    <Select id="selIdType" selectedKey="{IdProofType}" forceSelection="false" width="100%">
+                        <core:Item id="itmIdNone" key="" text="" />
+                        <core:Item id="itmIdAadhaar" key="AADHAAR" text="{i18n>idProof.aadhaar}" />
+                        <core:Item id="itmIdPan" key="PAN" text="{i18n>idProof.pan}" />
+                        <core:Item id="itmIdPassport" key="PASSPORT" text="{i18n>idProof.passport}" />
+                        <core:Item id="itmIdDl" key="DRIVING_LICENCE" text="{i18n>idProof.drivingLicence}" />
+                        <core:Item id="itmIdVoter" key="VOTER_ID" text="{i18n>idProof.voterId}" />
+                    </Select>
+
+                    <Label id="lblIdNumber" text="{i18n>field.idProofNumber}" labelFor="inpIdNumber" />
+                    <Input id="inpIdNumber" value="{IdProofNumber}" maxLength="30" />
+
+                    <core:Title id="titleVisit" text="{i18n>form.section.visit}" />
+
+                    <Label id="lblPurpose" text="{i18n>field.visitPurpose}" labelFor="inpPurpose" required="true" />
+                    <Input id="inpPurpose" value="{VisitPurpose}" maxLength="100" />
+
+                    <Label id="lblHost" text="{i18n>field.hostEmployee}" labelFor="inpHost" required="true" />
+                    <Input id="inpHost" value="{HostEmployee}" maxLength="80" />
+
+                    <Label id="lblVisitDate" text="{i18n>field.visitDate}" labelFor="dpVisitDate" required="true" />
+                    <DatePicker id="dpVisitDate" value="{VisitDate}" />
+
+                    <Label id="lblCheckIn" text="{i18n>field.checkInTime}" labelFor="tpCheckIn" />
+                    <TimePicker id="tpCheckIn" value="{CheckInTime}" />
+
+                </f:content>
+            </f:SimpleForm>
+        </content>
+
+        <footer>
+            <OverflowToolbar id="footerToolbar">
+                <ToolbarSpacer id="footerSpacer" />
+                <Button id="btnSubmit" type="Emphasized" text="{i18n>button.submit}" press=".onSubmit" />
+                <Button id="btnClear" text="{i18n>button.clear}" press=".onClear" />
+            </OverflowToolbar>
+        </footer>
+    </Page>
+
+</mvc:View>

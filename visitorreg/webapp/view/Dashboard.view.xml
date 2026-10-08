@@ -1,0 +1,46 @@
+<mvc:View
+    controllerName="zmp.visitorreg.controller.Dashboard"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true">
+
+    <Page id="dashboardPage" title="{i18n>dashboard.title}">
+        <content>
+            <HBox id="tileBox" wrap="Wrap" class="sapUiSmallMargin">
+
+                <GenericTile id="tileTotal"
+                    class="sapUiTinyMarginEnd sapUiTinyMarginBottom"
+                    header="{i18n>dashboard.tile.total}"
+                    subheader="{i18n>dashboard.tile.total.sub}"
+                    state="{= ${dashboard>/busy} ? 'Loading' : 'Loaded' }"
+                    press=".onShowVisitors">
+                    <TileContent id="tileTotalContent">
+                        <NumericContent id="numTotal" value="{dashboard>/total}"
+                            icon="sap-icon://group" withMargin="false" />
+                    </TileContent>
+                </GenericTile>
+
+                <GenericTile id="tileToday"
+                    class="sapUiTinyMarginEnd sapUiTinyMarginBottom"
+                    header="{i18n>dashboard.tile.today}"
+                    subheader="{i18n>dashboard.tile.today.sub}"
+                    state="{= ${dashboard>/busy} ? 'Loading' : 'Loaded' }"
+                    press=".onShowVisitors">
+                    <TileContent id="tileTodayContent">
+                        <NumericContent id="numToday" value="{dashboard>/today}"
+                            icon="sap-icon://appointment" withMargin="false" />
+                    </TileContent>
+                </GenericTile>
+
+            </HBox>
+
+            <HBox id="buttonBox" class="sapUiSmallMarginBegin">
+                <Button id="btnShowVisitors" text="{i18n>button.showVisitors}"
+                    icon="sap-icon://list" press=".onShowVisitors" class="sapUiTinyMarginEnd" />
+                <Button id="btnCreate" text="{i18n>button.create}" type="Emphasized"
+                    icon="sap-icon://add" press=".onCreate" />
+            </HBox>
+        </content>
+    </Page>
+
+</mvc:View>

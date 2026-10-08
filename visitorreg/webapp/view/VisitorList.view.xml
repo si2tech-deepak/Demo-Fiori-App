@@ -1,0 +1,57 @@
+<mvc:View
+    controllerName="zmp.visitorreg.controller.VisitorList"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true">
+
+    <Page id="visitorListPage" title="{i18n>list.title}"
+        showNavButton="true" navButtonPress=".onNavBack">
+        <content>
+            <Table id="visitorTable"
+                growing="true"
+                growingThreshold="20"
+                noDataText="{i18n>list.noData}"
+                updateFinished=".onUpdateFinished"
+                items="{
+                    path: '/Visitor',
+                    parameters: { $count: true },
+                    sorter: [
+                        { path: 'VisitDate', descending: true },
+                        { path: 'CheckInTime', descending: true }
+                    ]
+                }">
+
+                <headerToolbar>
+                    <OverflowToolbar id="tableToolbar">
+                        <Title id="tableTitle" text="{i18n>list.title}" level="H2" />
+                    </OverflowToolbar>
+                </headerToolbar>
+
+                <columns>
+                    <Column id="colName"><Text id="hdrName" text="{i18n>field.visitorName}" /></Column>
+                    <Column id="colMobile" minScreenWidth="Tablet" demandPopin="true"><Text id="hdrMobile" text="{i18n>field.mobileNumber}" /></Column>
+                    <Column id="colCompany" minScreenWidth="Tablet" demandPopin="true"><Text id="hdrCompany" text="{i18n>field.companyName}" /></Column>
+                    <Column id="colPurpose" minScreenWidth="Desktop" demandPopin="true"><Text id="hdrPurpose" text="{i18n>field.visitPurpose}" /></Column>
+                    <Column id="colHost" minScreenWidth="Desktop" demandPopin="true"><Text id="hdrHost" text="{i18n>field.hostEmployee}" /></Column>
+                    <Column id="colDate"><Text id="hdrDate" text="{i18n>field.visitDate}" /></Column>
+                    <Column id="colTime" minScreenWidth="Tablet" demandPopin="true"><Text id="hdrTime" text="{i18n>field.checkInTime}" /></Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem id="visitorItem">
+                        <cells>
+                            <Text id="txtName" text="{VisitorName}" />
+                            <Text id="txtMobile" text="{MobileNumber}" />
+                            <Text id="txtCompany" text="{CompanyName}" />
+                            <Text id="txtPurpose" text="{VisitPurpose}" />
+                            <Text id="txtHost" text="{HostEmployee}" />
+                            <Text id="txtDate" text="{VisitDate}" />
+                            <Text id="txtTime" text="{CheckInTime}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+
+</mvc:View>

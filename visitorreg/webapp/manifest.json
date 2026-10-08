@@ -1,0 +1,158 @@
+{
+  "_version": "1.73.1",
+  "sap.app": {
+    "id": "zmp.visitorreg",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "Visitor Registration",
+    "description": "Visitor Registration",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.32.0",
+      "toolsId": "ffed8857-05bd-4f2a-b722-8310ee6b9653"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata4/sap/zmp_ui_visitor_o4/srvd/sap/zmp_ui_visitor/0001/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "visitor-manage": {
+          "semanticObject": "ZVisitor",
+          "action": "manage",
+          "title": "Visitor Registration App",
+          "subTitle": "Manage visitor registrations",
+          "icon": "sap-icon://visits",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.136.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "zmp.visitorreg.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "zmp.visitorreg.view",
+        "async": true,
+        "viewPath": "zmp.visitorreg.view"
+      },
+      "routes": [
+        {
+          "name": "RouteDashboard",
+          "pattern": "",
+          "target": [
+            "TargetDashboard"
+          ]
+        },
+        {
+          "name": "RouteVisitorList",
+          "pattern": "visitors",
+          "target": [
+            "TargetVisitorList"
+          ]
+        },
+        {
+          "name": "RouteCreate",
+          "pattern": "create",
+          "target": [
+            "TargetMain"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetDashboard": {
+          "id": "Dashboard",
+          "name": "Dashboard",
+          "level": 1
+        },
+        "TargetVisitorList": {
+          "id": "VisitorList",
+          "name": "VisitorList",
+          "level": 2
+        },
+        "TargetMain": {
+          "id": "Main",
+          "name": "Main",
+          "level": 2
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "zmp.visitorreg.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  }
+}
